@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:view contentType="text/html;charset=UTF-8" encoding="UTF-8">
+   <h:head>
+
+   </h:head>
+   <h:body>
+      <h:form>
+         <p:calendar/>
+      </h:form>
+
+      <h:dataTable id="artikelliste" var="inhalt" value="#{shop.shopinhalt}" >
+         <h:column>
+            <f:facet name="header">Position-----</f:facet>
+            <h:outputText value="#{inhalt.position}"/>
+         </h:column>
+         <h:column>
+            <f:facet name="header">Name-----</f:facet>
+            <h:outputText value="#{inhalt.name}"/>
+         </h:column>
+         <h:column>
+            <f:facet name="header">Beschreibung-----</f:facet>
+            <h:outputText value="#{inhalt.beschreibung}"/>
+         </h:column>
+         <h:column>
+            <f:facet name="header">Preis-----</f:facet>
+            <h:outputText value="#{inhalt.preis} €"/>
+         </h:column>
+
+      </h:dataTable>
+
+      <p>
+         ----------- Neuer Versuch --------- <br />
+      </p>
+      <p:panelGrid columns="2">
+         <h:commandLink value="zurück" action="#{controller.zurueck}"/>
+         <h:commandLink value="vorwärts" action="#{controller.vor}"/>
+         <h:outputLabel value="Position" id="val"/>
+         <h:outputText value="#{controller.artikel.position}"/>
+         <h:outputLabel value="Name" id="name"/>
+         <h:inputText value="#{controller.artikel.name}"/>
+         <h:outputLabel value="Beschreibung" id="besch"/>
+         <h:inputText value="#{controller.artikel.beschreibung}"/>
+
+
+
+      </p:panelGrid>
+   </h:body>
+</f:view>
+
+</html>
